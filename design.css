@@ -1,10 +1,28 @@
-
+body
+{
+    background-color: midnightblue;
+}
 .speed
 {
     color: crimson;
 }
+table
+{
+    border-collapse: collapse;
+    margin-left: 15px;
+    width: 42%;
+    
+}
+th, td 
+{
+    padding: 5px;
+}
 .vsebina
 {
     color: darkcyan;
+    width: 50%;
+    margin: auto;
+    background-color: rgb(204, 142, 175);
+    border: rgb(0, 0, 0) 5px;
     
 }
