@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <div style="padding: 20px">
+            <form class="ui form">
+                <div class="field">
+                    <label>Ime uporabnika</label>
+                    <input v-model="newname" id="ime" type="text" name="first-name" placeholder="First Name">
+                </div>
+                <button v-on:click="addToSeznam()" class="ui button primary" type="button">Dodaj</button>
+            </form>
+            <hr />
+        <div v-for="(Item, index) in seznam" style="width: 30%; margin: 20px; float:left;">
+            <div class="ui card">
+                <a class="image" href="#">
+                  <img src="rick.jpg">
+                </a>
+                <div class="content">
+                  <a class="header" href="#">{{ Item }}</a>
+                  <div class="meta">
+                    <button v-on:click="removeFromSeznam(index)" type="button">Delete</button>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Vue({
+                el: "#root",
+                data: () => ({
+                    newname: "",
+                    seznam: ["Jure","Tim","Anže"]
+                }),
+                methods:{
+                  clicked()
+                  {
+                    alert(this.ime);
+                  },
+                  addToSeznam(){
+                    this.seznam.push(this.newname);
+                    this.newname="";
+                  },
+                  removeFromSeznam(index)
+                  {
+                      this.seznam.splice(index, 1);
+                  }
+                  
+                }
+            });
+        });
+     
+    </script>
+</body>
+
+</html>
+
