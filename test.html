@@ -18,7 +18,7 @@
             <form class="ui form">
                 <div class="field">
                     <label>Ime uporabnika</label>
-                    <input v-model="newname" id="ime" type="text" name="first-name" placeholder="First Name">
+                    <input v-on:keyup="enterpressed()" v-model="newname" id="ime" type="text" name="first-name" placeholder="First Name">
                 </div>
                 <button v-on:click="addToSeznam()" class="ui button primary" type="button">Dodaj</button>
             </form>
@@ -29,7 +29,7 @@
                   <img src="rick.jpg">
                 </a>
                 <div class="content">
-                  <a class="header" href="#">{{ Item }}</a>
+                  <a class="header" href="#">{{ 'email' }}</a>
                   <div class="meta">
                     <button v-on:click="removeFromSeznam(index)" type="button">Delete</button>
                   </div>
@@ -43,7 +43,7 @@
                 el: "#root",
                 data: () => ({
                     newname: "",
-                    seznam: ["Jure","Tim","Anže"]
+                    seznam: ("http://jsonplaceholder.typicode.com/users")
                 }),
                 methods:{
                   clicked()
@@ -57,6 +57,14 @@
                   removeFromSeznam(index)
                   {
                       this.seznam.splice(index, 1);
+                  },
+                  enterpressed()
+                  {
+                      if(window.event.key=='ž')
+                      {
+                          this.addToSeznam();
+                      }
+                      
                   }
                   
                 }
